@@ -69,6 +69,41 @@ function AutoBind(
 
   return adjDescriptor;
 }
+// Project Class
+
+class Project {
+  projectTitle: string;
+  projectDescription: string;
+  projectPeople: number;
+  templateElement: HTMLTemplateElement;
+  hostElement: HTMLElement;
+  element: HTMLElement;
+
+  constructor(prjTitle: string, prjDesc: string, prjPeople: number) {
+    this.projectTitle = prjTitle;
+    this.projectDescription = prjDesc;
+    this.projectPeople = prjPeople;
+    this.templateElement = document.getElementById(
+      "single-project"
+    ) as HTMLTemplateElement;
+    this.hostElement = document.getElementById(
+      "active-projects-list"
+    ) as HTMLElement;
+    const importedNode = document.importNode(
+      this.templateElement.content,
+      true
+    );
+
+    this.element = importedNode.firstElementChild as HTMLElement;
+    this.createProject();
+  }
+
+  private createProject() {
+    this.element.innerText = `${this.projectTitle} +${this.projectDescription}+ ${this.projectPeople}`;
+    this.hostElement.insertAdjacentElement("afterbegin", this.element);
+  }
+}
+
 //ProjectList Class
 
 class ProjectList {
@@ -94,7 +129,9 @@ class ProjectList {
   private renderContent() {
     const listId = `${this.type}-projects-list`;
     this.element.querySelector("ul")!.id = listId;
-    this.element.querySelector("h2")!.innerText= `${this.type.toUpperCase()} PROJECTS`
+    this.element.querySelector(
+      "h2"
+    )!.innerText = `${this.type.toUpperCase()} PROJECTS`;
   }
 
   private attach() {
@@ -185,7 +222,9 @@ class ProjectInput {
 
     if (Array.isArray(userInput)) {
       const [title, desc, people] = userInput;
-      console.log(title, desc, people);
+
+      const newProject = new Project(title, desc, people);
+      console.log(newProject);
       this.clearInputs();
     }
   }
