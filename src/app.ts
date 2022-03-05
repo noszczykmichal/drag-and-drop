@@ -107,6 +107,41 @@ function AutoBind(
 
   return adjDescriptor;
 }
+// Project Class
+
+class Project {
+  projectTitle: string;
+  projectDescription: string;
+  projectPeople: number;
+  templateElement: HTMLTemplateElement;
+  hostElement: HTMLElement;
+  element: HTMLElement;
+
+  constructor(prjTitle: string, prjDesc: string, prjPeople: number) {
+    this.projectTitle = prjTitle;
+    this.projectDescription = prjDesc;
+    this.projectPeople = prjPeople;
+    this.templateElement = document.getElementById(
+      "single-project"
+    ) as HTMLTemplateElement;
+    this.hostElement = document.getElementById(
+      "active-projects-list"
+    ) as HTMLElement;
+    const importedNode = document.importNode(
+      this.templateElement.content,
+      true
+    );
+
+    this.element = importedNode.firstElementChild as HTMLElement;
+    this.createProject();
+  }
+
+  private createProject() {
+    this.element.innerText = `${this.projectTitle} +${this.projectDescription}+ ${this.projectPeople}`;
+    this.hostElement.insertAdjacentElement("afterbegin", this.element);
+  }
+}
+
 //ProjectList Class
 
 class ProjectList {
