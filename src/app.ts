@@ -61,6 +61,14 @@ class ProjectState extends State<Project> {
     this.updateListeners();
   }
 
+  deleteProject(projectId: string) {
+    const updatedProjects = [...this.projects].filter(
+      (item) => item.id !== projectId
+    );
+    this.projects = updatedProjects;
+    this.updateListeners();
+  }
+
   changeStatus(projectId: string, newStatus: ProjectStatus) {
     const project = this.projects.find((prj) => prj.id === projectId);
     if (project && project.status !== newStatus) {
@@ -196,6 +204,7 @@ class ProjectItem
   implements Draggable
 {
   private project: Project;
+  projectCTA: HTMLButtonElement;
 
   get countPeople() {
     if (this.project.people === 1) {
@@ -207,6 +216,7 @@ class ProjectItem
   constructor(hostId: string, prjct: Project) {
     super("single-project", hostId, false, prjct.id);
     this.project = prjct;
+    this.projectCTA = this.element.querySelector("button") as HTMLButtonElement;
     this.configure();
     this.renderContent();
   }
@@ -225,7 +235,14 @@ class ProjectItem
     }
   }
 
+  @AutoBind
+  deleteProject(event: Event) {
+    event.preventDefault();
+    projectState.deleteProject(this.project.id);
+  }
+
   configure() {
+    this.projectCTA.addEventListener("click", this.deleteProject);
     this.element.addEventListener("dragstart", this.dragStartHandler);
     this.element.addEventListener("dragend", this.dragEndHandler);
   }
