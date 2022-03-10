@@ -88,10 +88,17 @@ button:active {
 }
 
 .projects li {
+  position: relative;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
   margin: 1rem;
   background: #fff;
+}
+
+.projects li button{
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
 }
 
 .projects li h2 {
