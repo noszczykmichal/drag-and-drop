@@ -1,11 +1,7 @@
-/*/// <reference path="./base-components.ts"/>
-/// <reference path="../decorators/autobind.ts"/>
-/// <reference path="../state/project-state.ts"/>
-/// <reference path="../util/validation.ts" />*/
-import { Component } from "./base-components.js";
-import { Validatable, validate } from "../util/validation.js";
-import { AutoBind } from "../decorators/autobind.js";
-import { projectState } from "../state/project-state.js";
+import { Component } from "./base-components";
+import { Validatable, validate } from "../util/validation";
+import { AutoBind } from "../decorators/autobind";
+import { projectState } from "../state/project-state";
 // import * as Validation from "../util/validation.js"; bundle import
 // import { AutoBind as autobind } from "../decorators/autobind.js"; importing and assigning alias
 // import Cmp from "./base-components.js"; syntax for default export but source file has to have default export
