@@ -1,14 +1,9 @@
-/*/// <reference path="./base-components.ts"/>
-/// <reference path="../decorators/autobind.ts"/>
-/// <reference path="../state/project-state.ts"/>
-/// <reference path="../models/project.ts"/>
-/// <reference path="../models/drag-drop.ts"/>*/ //TS imports
-import { Component } from "./base-components.js";
-import { DragTarget } from "../models/drag-drop.js";
-import { Project, ProjectStatus } from "../models/project.js";
-import { AutoBind } from "../decorators/autobind.js";
-import { projectState } from "../state/project-state.js";
-import { ProjectItem } from "./project-item.js";
+import { Component } from "./base-components";
+import { DragTarget } from "../models/drag-drop";
+import { Project, ProjectStatus } from "../models/project";
+import { AutoBind } from "../decorators/autobind";
+import { projectState } from "../state/project-state";
+import { ProjectItem } from "./project-item";
 
 //ProjectList Class
 export class ProjectList

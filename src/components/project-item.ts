@@ -1,14 +1,8 @@
-/*
-/// <reference path="./base-components.ts"/>
-/// <reference path="../decorators/autobind.ts"/>
-/// <reference path="../state/project-state.ts"/>
-/// <reference path="../models/project.ts"/>
-/ <reference path="../models/drag-drop.ts"/>*/ //imports using TS
-import { Draggable } from "../models/drag-drop.js";
-import { Component } from "./base-components.js";
-import { Project } from "../models/project.js";
-import { AutoBind } from "../decorators/autobind.js";
-import { projectState } from "../state/project-state.js";
+import { Draggable } from "../models/drag-drop";
+import { Component } from "./base-components";
+import { Project } from "../models/project";
+import { AutoBind } from "../decorators/autobind";
+import { projectState } from "../state/project-state";
 
 //ProjectItem Class
 
