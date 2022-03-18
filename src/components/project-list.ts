@@ -8,8 +8,7 @@ import { ProjectItem } from "./project-item";
 //ProjectList Class
 export class ProjectList
   extends Component<HTMLDivElement, HTMLElement>
-  implements DragTarget
-{
+  implements DragTarget {
   assignedProjects: Project[];
   constructor(private type: "active" | "finished") {
     super("project-list", "app", false, `${type}-projects`);
@@ -28,6 +27,7 @@ export class ProjectList
   }
   @AutoBind
   dropHandler(event: DragEvent) {
+    event.preventDefault();
     const prjId = event.dataTransfer!.getData("text/plain");
     projectState.changeStatus(
       prjId,
